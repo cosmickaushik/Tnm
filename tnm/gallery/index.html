@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Gallery</title>
+		<meta name="description" content="A set of fun effects for mouse-following image trails." />
+		<meta name="keywords" content="image trail, effect, web design, mouse, javascript, gsap" />
+		<meta name="author" content="Codrops" />
+		<!-- <link rel="icon" type="image/png" sizes="56x56" href="https://effe.org.in/img/background/finallogo2.png"> -->
+		<link rel="shortcut icon" href="/finallogo.png">
+		<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+		<link rel="stylesheet" href="https://use.typekit.net/lpe8txe.css">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script></head>
+	
+		<style>
+	/* Page Loader */
+	
+	@import url(https://fonts.googleapis.com/css?family=Montserrat);
+	
+	#loader{
+	position: fixed;
+	z-index: 2000000;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left:0;
+	background: #030321;
+	font-family: Arial;
+	/* background: #fff; */
+	display: flex;
+	justify-content: center;
+	align-content: flex-end;
+	font-weight: 800;
+	}
+	html, body{
+	overflow-y:hidden !important;
+	height: 100%;
+	
+	}
+	
+	
+	#loader svg {
+	font: 10.5em 'Montserrat';
+	width: 960px;
+	height: 250px;
+	margin: 0 auto;
+	margin-top:30vh;
+	}
+	
+	.text-copy {
+	fill: none;
+	stroke: white;
+	stroke-dasharray: 6% 29%;
+	stroke-width: 5px;
+	stroke-dashoffset: 0%;
+	animation: stroke-offset 5.5s infinite linear;
+	}
+	
+	.text-copy:nth-child(1){
+	stroke: #4D163D;
+	animation-delay: -1;
+	}
+	
+	.text-copy:nth-child(2){
+	stroke: #840037;
+	animation-delay: -2s;
+	}
+	
+	.text-copy:nth-child(3){
+	stroke: #BD0034;
+	animation-delay: -3s;
+	}
+	
+	.text-copy:nth-child(4){
+	stroke: #BD0034;
+	animation-delay: -4s;
+	}
+	
+	.text-copy:nth-child(5){
+	stroke: #FDB731;
+	animation-delay: -5s;
+	}
+	
+	@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
+	}
+	</style>
+	<script>
+		window.onload = function(){ document.getElementById("loader").style.display = "none"; }
+	</script>
+		<body class="demo-6 ">
+				<div id="loader">
+				<svg viewBox="0 0 960 300">
+					<symbol id="s-text">
+					<text text-anchor="middle" x="50%" y="80%">effe'19</text>
+					</symbol>
+				
+					<g class = "g-ants">
+					<use xlink:href="#s-text" class="text-copy"></use>
+					<use xlink:href="#s-text" class="text-copy"></use>
+					<use xlink:href="#s-text" class="text-copy"></use>
+					<use xlink:href="#s-text" class="text-copy"></use>
+					<use xlink:href="#s-text" class="text-copy"></use>
+					</g>
+				</svg>
+				<!-- <h2 style="color: aliceblue;">Relive The Reminiscence</h2> -->
+				</div>
+		<main>
+			<div class="message"><img src="Asset 8@4x-8.png">&nbsp<span></span></div>
+
+			<div class="content">
+				<div class="content__img content__img--full" style="background-image:url(img/full1-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full3-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full7-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full11-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full4-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full6-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full9-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full8-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full2-min.jpg);"></div>
+				<div class="content__img content__img--full" style="background-image:url(img/full10-min.jpg);"></div>
+
+				
+				<h3 class="content__title">EFFERVESCENCE</h3>
+			</div><!--/content-->
+			<div class="frame">
+				<div class="frame__title-wrap">
+					
+						<h2 class="frame__pagetitle"> <span><a href="../index.html">Back</a></span></h2>
+					
+				</div>
+				
+				<a class="navbar-brand" href="index.html#">
+				<span class="logo">
+				<img class="light-logo" width="180px" height="auto" src="Asset 8@4x-8.png" alt="logo">
+			</span>
+
+			</a>
+			
+				<!--<img src="Asset 8@4x-8.png" width="180px" height="auto">
+                <a  id="back" href="index.html">Go back</a>-->
+			</div>
+            <a href="../index.html" class="back">Go Back</a>
+		</main>
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		<script src="js/TweenMax.min.js"></script>
+		<script src="js/demo6.js"></script></body>
+</html>
