@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 
 
@@ -381,250 +380,14 @@ window.onload = function(){ document.getElementById("loader").style.display = "n
     <div data-depth="0.2" class="cover-bg bg-img" data-image-src="./bg.jpg"></div>
     <div class="content" style="z-index: -1">
 
-    	<script>
-	(function() {
-
-    var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
-
-    // Main
-    initHeader();
-    initAnimation();
-    addListeners();
-
-    function initHeader() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        target = {x: width/2, y: height/2};
-
-        largeHeader = document.getElementById('large-header');
-        largeHeader.style.height = height+'px';
-
-        canvas = document.getElementById('demo-canvas');
-        canvas.width = width;
-        canvas.height = height;
-        ctx = canvas.getContext('2d');
-
-        // create points
-        points = [];
-        for(var x = 0; x < width; x = x + width/20) {
-            for(var y = 0; y < height; y = y + height/20) {
-                var px = x + Math.random()*width/20;
-                var py = y + Math.random()*height/20;
-                var p = {x: px, originX: px, y: py, originY: py };
-                points.push(p);
-            }
-        }
-
-        // for each point find the 5 closest points
-        for(var i = 0; i < points.length; i++) {
-            var closest = [];
-            var p1 = points[i];
-            for(var j = 0; j < points.length; j++) {
-                var p2 = points[j]
-                if(!(p1 == p2)) {
-                    var placed = false;
-                    for(var k = 0; k < 5; k++) {
-                        if(!placed) {
-                            if(closest[k] == undefined) {
-                                closest[k] = p2;
-                                placed = true;
-                            }
-                        }
-                    }
-
-                    for(var k = 0; k < 5; k++) {
-                        if(!placed) {
-                            if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
-                                closest[k] = p2;
-                                placed = true;
-                            }
-                        }
-                    }
-                }
-            }
-            p1.closest = closest;
-        }
-
-        // assign a circle to each point
-        for(var i in points) {
-            var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
-            points[i].circle = c;
-        }
-    }
-
-    // Event handling
-    function addListeners() {
-        if(!('ontouchstart' in window)) {
-            window.addEventListener('mousemove', mouseMove);
-        }
-        window.addEventListener('scroll', scrollCheck);
-        window.addEventListener('resize', resize);
-    }
-
-    function mouseMove(e) {
-        var posx = posy = 0;
-        if (e.pageX || e.pageY) {
-            posx = e.pageX;
-            posy = e.pageY;
-        }
-        else if (e.clientX || e.clientY)    {
-            posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
-        target.x = posx;
-        target.y = posy;
-    }
-
-    function scrollCheck() {
-        if(document.body.scrollTop > height) animateHeader = false;
-        else animateHeader = true;
-    }
-
-    function resize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        largeHeader.style.height = height+'px';
-        canvas.width = width;
-        canvas.height = height;
-    }
-
-    // animation
-    function initAnimation() {
-        animate();
-        for(var i in points) {
-            shiftPoint(points[i]);
-        }
-    }
-
-    function animate() {
-        if(animateHeader) {
-            ctx.clearRect(0,0,width,height);
-            for(var i in points) {
-                // detect points in range
-                if(Math.abs(getDistance(target, points[i])) < 4000) {
-                    points[i].active = 0.3;
-                    points[i].circle.active = 0.6;
-                } else if(Math.abs(getDistance(target, points[i])) < 20000) {
-                    points[i].active = 0.1;
-                    points[i].circle.active = 0.3;
-                } else if(Math.abs(getDistance(target, points[i])) < 40000) {
-                    points[i].active = 0.02;
-                    points[i].circle.active = 0.1;
-                } else {
-                    points[i].active = 0;
-                    points[i].circle.active = 0;
-                }
-
-                drawLines(points[i]);
-                points[i].circle.draw();
-            }
-        }
-        requestAnimationFrame(animate);
-    }
-
-    function shiftPoint(p) {
-        TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
-            y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
-            onComplete: function() {
-                shiftPoint(p);
-            }});
-    }
-
-    // Canvas manipulation
-    function drawLines(p) {
-        if(!p.active) return;
-        for(var i in p.closest) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(156,217,249,'+ p.active+')';
-            ctx.stroke();
-        }
-    }
-
-    function Circle(pos,rad,color) {
-        var _this = this;
-
-        // constructor
-        (function() {
-            _this.pos = pos || null;
-            _this.radius = rad || null;
-            _this.color = color || null;
-        })();
-
-        this.draw = function() {
-            if(!_this.active) return;
-            ctx.beginPath();
-            ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'rgba(156,217,249,'+ _this.active+')';
-            ctx.fill();
-        };
-    }
-
-    // Util
-    function getDistance(p1, p2) {
-        return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
-    }
     
-})(jQuery);
-</script>
-<div id="large-header" class="large-header">
-  <canvas id="demo-canvas"></canvas>
-   <!-- <h1 class="main-title">Connect <span class="thin">Three</span></h1> -->
 
 
 
 
-</div>
-
-<style>
-	.large-header {
-	position: relative;
-	width: 100%;
-	background: #333;
-	overflow: hidden;
-	background-size: cover;
-	background-position: center center;
-	z-index: 1;
-}
-
-#large-header {
-	background-image: url('https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/img/demo-1-bg.jpg');
-}
-
-.main-title {
-	position: absolute;
-	margin: 0;
-	padding: 0;
-	color: #f9f1e9;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate3d(-50%,-50%,0);
-	transform: translate3d(-50%,-50%,0);
-}
-
-.demo-1 .main-title {
-	text-transform: uppercase;
-	font-size: 4.2em;
-	letter-spacing: 0.1em;
-}
-
-.main-title .thin {
-	font-weight: 200;
-}
-
-@media only screen and (max-width : 768px) {
-	.demo-1 .main-title {
-		font-size: 3em;
-	}
-}
-</style>
     <!-- <canvas class="landscape"></canvas> -->
     
     <!-- <script id="custom-vertex" type="x-shader/x-vertex">
-
-
     
       vec3 mod289(vec3 x)
       {
@@ -789,7 +552,6 @@ window.onload = function(){ document.getElementById("loader").style.display = "n
         float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x); 
         return 2.2 * n_xyz;
       }
-
       #define PI 3.1415926535897932384626433832795
       
       uniform float time;
@@ -799,11 +561,8 @@ window.onload = function(){ document.getElementById("loader").style.display = "n
       uniform float distortCenter;
       uniform float roadWidth;
       varying float vDisplace;
-
       varying float fogDepth;
-
       void main(){
-
         float t = time * speed;
         float wRoad = distortCenter;
         float wRoad2 = wRoad * 0.5;
@@ -815,7 +574,6 @@ window.onload = function(){ document.getElementById("loader").style.display = "n
           sin(angleCenter) + 
           sin(angleCenter*0.5) 
         ) * wRoad;
-
         
         vec3 noiseIn = vec3(uv, 1.0)*10.0;
         float noise = cnoise(vec3(noiseIn.x, noiseIn.y + scroll, noiseIn.z));
@@ -825,48 +583,35 @@ window.onload = function(){ document.getElementById("loader").style.display = "n
         float f = abs(cos(angle));
         h *= pow(f, 1.5 + roadWidth);
         
-
         vDisplace = h;
         
-
         h*=maxHeight;
-
         vec3 transformed = vec3( position.x, position.y, position.z + h );
-
-
         vec4 mvPosition = modelViewMatrix * vec4( transformed, 1.0 );
         gl_Position = projectionMatrix * mvPosition;
         
         fogDepth = -mvPosition.z;
-
       }
-
     </script>
     <script id="custom-fragment" type="x-shader/x-fragment">
       uniform float time;
       uniform vec3 color;
       uniform sampler2D pallete;
       varying float vDisplace;
-
       uniform vec3 fogColor;
       uniform float fogNear;
       uniform float fogFar;
       varying float fogDepth;
-
       void main(){
-
         vec2 stripPos = vec2( 0.0, vDisplace * (sin(time)*0.5+0.7) );
         vec4 stripColor = texture2D( pallete, stripPos );
         stripColor *= pow(1.0-vDisplace, 1.0);
-
         gl_FragColor = stripColor;
-
         #ifdef USE_FOG
           float fogFactor = smoothstep( fogNear, fogFar, fogDepth );
           gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
         #endif
       }
-
     </script> -->
 
   </div> 
@@ -1366,7 +1111,6 @@ of culture, excitement and opportunities.
                       <h4>Contact</h4>
                       <p>Call: +(91)9934653679</p>
                       <p>Email: effervescence@iiita.ac.in</p>
-
                       <div class="icons icons-margin">
                         <a class="icon-btn" href="#">
                           <i class="icon fa fa-instagram"></i>
@@ -1520,7 +1264,6 @@ of culture, excitement and opportunities.
               var data='"attendees":[{"name":"'+name+'","email":"'+email+'","phone":"'+phone+'","college":"'+college+'","sex":"'+gender+'","extraInfoValue":"" }]';
               var data2='{"eventId":6364,"totalFare":1000,"addExtra":0,"attendingEvents":[{"programId":17437,"programName":"Effervescence\'19","subProgramName":"Overall Fest Pass","fare":1000,'+ data +'}]}';
             
-
               $.ajax({
                 type: "POST",
                 url: "https://www.thecollegefever.com/v1/booking/bookticket",
@@ -1554,14 +1297,11 @@ of culture, excitement and opportunities.
                   alert(xhr.responseText);
                 }
             });
-
           },
           error: function(data){
               alert("fail");
           }
         });
-
-
       });
    
   </script> -->
