@@ -3940,7 +3940,11 @@ textarea {
   margin-bottom: 2rem; }
   @media (min-width: 768px) {
     .section-content .title-desc {
-      margin-bottom: 1rem; } }
+      margin-bottom: 1rem;
+      align-items: center;
+       } 
+
+     }
 
 .section-content .illustr img {
   width: 100%; }
@@ -3992,7 +3996,14 @@ textarea {
       height: 128px; } }
   @media (min-width: 768px) {
     .section-content img.logo {
-      height: 160px; } }
+      height: 160px; } 
+  @media (min-width: 990px) {
+    .section-content img.logo {
+      height: 300px;
+      margin-left: 50%;
+       } 
+
+    }
 
 .section-content hr {
   width: 50%;
@@ -4150,7 +4161,9 @@ textarea {
     content: ""; }
 
 .row .align-self-end .section-content .title-desc {
-  margin-bottom: 0; }
+  margin-bottom: 0; 
+ 
+}
 
 .row .align-self-end .section-content p:last-child {
   margin-bottom: 0; }
