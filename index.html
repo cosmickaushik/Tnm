@@ -3549,12 +3549,7 @@ animation-delay: -5s;
 
 <!-- BEGIN OF page cover -->
 <div class="page-cover" id="parallax-cover" style="z-index: 100000000;">
-    <!-- <div data-depth="0.2" class="cover-bg bg-img"></div> -->
-   		
    			
-   	
-		<!-- <div style="z-index: 1000000000">	 -->
-  			<!-- Stars -->
 		<div id="codeincover">
 			<!-- Stars -->
 			<div class="stars">  
@@ -5661,8 +5656,6 @@ animation-delay: -5s;
 
 			<!-- sprites -->
 			<div class="spriteWrap"></div>
-
-		<!-- control panel -->
 		</div>
 
 </div>
@@ -5840,6 +5833,17 @@ animation-delay: -5s;
   	#Home{
   		height: 100vh !important;
   	}
+  	@media (min-width: 1000px){
+  		#home_title{
+  			margin-left: 22%;
+  			padding-bottom: 0px !important;
+  		}
+  	}
+  	@media (min-width: 100px){
+  		#home_title{
+  			padding-bottom: 135px;
+  		}
+  	}
   </style>
   <!--END OF page cover -->
 
@@ -5854,7 +5858,7 @@ animation-delay: -5s;
         <!-- content -->
         <div class="section-content anim" >
           <div class="row">
-            <div class="col-12 col-lg-6 text-left" >
+            <div class="col-12 col-lg-6 text-left"  id="home_title">
               <!-- title and description -->
               <div class="title-desc"  >
                   <img style="padding-left: auto; padding-right: auto; height: 70%;
