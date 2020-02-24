@@ -17,7 +17,7 @@ var width = window.screen.height;
 var height = window.screen.width;
 var profShows =
 {
-    name_Of_Event: ["Haute Coulture", "Footlose", "Open Mic", "Battle of Bands", "Voice of MRIDANG", "Mr and Mrs MRIDANG", "MAIT Got Talent", "RunThrough"],
+    name_Of_Event: ["Haute Couture", "Footlose", "Open Mic", "Battle of Bands", "Voice of MRIDANG", "Mr and Ms MRIDANG", "MAIT Got Talent", "RunThrough"],
     details: {
         name_Of_Artist: ["", "", "", "", "", "", "", ""],
         date: ["", "", "", "", "", "", "", ""],
