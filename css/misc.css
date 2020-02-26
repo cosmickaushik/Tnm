@@ -1,0 +1,58 @@
+html,body,#codeoutcover,#parallax-cover {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+body {
+  height: 100vh !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 200px) {
+  #codeincover {
+    display: contents;
+  }
+}
+@media (min-width: 960px) {
+  #codeoutcover {
+    display: contents;
+  }
+  #codeincover {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .img {
+    height: 50vh;
+    width: 50vh;
+  }
+  .expereince {
+    color: #eee;
+    font-size: 3em;
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    margin-bottom: 0.7em;
+    position: absolute;
+    top: 45%;
+    left: 20%;
+    z-index: 1;
+    mix-blend-mode: color-dodge;
+  }
+}
+#Home {
+  height: 100vh !important;
+}
+@media (min-width: 950px) {
+  #home_title {
+    margin-left: 22%;
+    padding-bottom: 0px !important;
+  }
+}
+@media (min-width: 100px) {
+  #home_title {
+    padding-bottom: 200px;
+  }
+}

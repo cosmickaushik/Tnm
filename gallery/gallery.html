@@ -1,0 +1,614 @@
+<html>
+    <head>
+      <link rel="icon" href="../finallogo.png" type="image/icon">
+        <title>
+            Gallery TnM 2020
+        </title>
+    
+    <script>
+      window.onload = function(){ document.getElementById("loader").style.display = "none"; }
+  </script>
+  <style>
+   /* Page Loader */
+  
+   @import url(https://fonts.googleapis.com/css?family=Montserrat);
+  
+  #loader{
+  position: fixed;
+  z-index: 200000;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  background: #030321;
+  font-family: Arial;
+  /* background: #fff; */
+  display: flex;
+  justify-content: center;
+  align-content: flex-end;
+  
+  font-weight: 800;
+  }
+  html, body{
+  
+  height: 100%;
+  
+  }
+  
+  
+  #loader svg {
+  font: 10.5em 'Montserrat';
+  width: 960px;
+  height: 250px;
+  margin: 0 auto;
+  margin-top:30vh;
+  }
+  
+  .text-copy {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 5px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
+  }
+  
+  .text-copy:nth-child(1){
+  stroke: #4D163D;
+  animation-delay: -1;
+  }
+  
+  .text-copy:nth-child(2){
+  stroke: #840037;
+  animation-delay: -2s;
+  }
+  
+  .text-copy:nth-child(3){
+  stroke: #BD0034;
+  animation-delay: -3s;
+  }
+  
+  .text-copy:nth-child(4){
+  stroke: #BD0034;
+  animation-delay: -4s;
+  }
+  
+  .text-copy:nth-child(5){
+  stroke: #FDB731;
+  animation-delay: -5s;
+  }
+  
+  @keyframes stroke-offset{
+  100% {stroke-dashoffset: -35%;}
+  }
+  </style>
+    <style>
+    html:not(.touch) .gallery-image figcaption, .touch .gallery-image figcaption, .mfp-with-zoom .mfp-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0);
+  padding: 1em;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  max-width: calc(100% - 9em);
+  line-height: 1.25;
+  text-align: center;
+  box-sizing: border-box;
+}
+html:not(.touch) .gallery-image figcaption:before, .touch .gallery-image figcaption:before, .mfp-with-zoom .mfp-title:before, html:not(.touch) .gallery-image figcaption:after, .touch .gallery-image figcaption:after, .mfp-with-zoom .mfp-title:after {
+  content: "";
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  z-index: -1;
+}
+html:not(.touch) .gallery-image figcaption:before, .touch .gallery-image figcaption:before, .mfp-with-zoom .mfp-title:before, html:not(.touch) .gallery-image figcaption:after, .touch .gallery-image figcaption:after, .mfp-with-zoom .mfp-title:after {
+  right: 100%;
+  bottom: 100%;
+}
+html:not(.touch) .gallery-image figcaption:after, .touch .gallery-image figcaption:after, .mfp-with-zoom .mfp-title:after {
+  left: 100%;
+  top: 100%;
+}
+html:not(.touch) .gallery-image figcaption.visible, html:not(.touch) .gallery-image:hover figcaption, .touch .gallery-image figcaption, .mfp-with-zoom .visible.mfp-title, .mfp-with-zoom.mfp-ready .mfp-title {
+  color: white;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.2s ease 0.3s;
+  transition: all 0.2s ease 0.3s;
+}
+html:not(.touch) .gallery-image figcaption.visible:before, html:not(.touch) .gallery-image:hover figcaption:before, .touch .gallery-image figcaption:before, .mfp-with-zoom .visible.mfp-title:before, .mfp-with-zoom.mfp-ready .mfp-title:before, html:not(.touch) .gallery-image figcaption.visible:after, html:not(.touch) .gallery-image:hover figcaption:after, .touch .gallery-image figcaption:after, .mfp-with-zoom .visible.mfp-title:after, .mfp-with-zoom.mfp-ready .mfp-title:after {
+  opacity: 1;
+}
+html:not(.touch) .gallery-image figcaption.visible:before, html:not(.touch) .gallery-image:hover figcaption:before, .touch .gallery-image figcaption:before, .mfp-with-zoom .visible.mfp-title:before, .mfp-with-zoom.mfp-ready .mfp-title:before {
+  right: -1.5em;
+  bottom: -1.5em;
+}
+html:not(.touch) .gallery-image figcaption.visible:after, html:not(.touch) .gallery-image:hover figcaption:after, .touch .gallery-image figcaption:after, .mfp-with-zoom .visible.mfp-title:after, .mfp-with-zoom.mfp-ready .mfp-title:after {
+  left: -1.5em;
+  top: -1.5em;
+}
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.gallery {
+  -webkit-column-gap: 0;
+     -moz-column-gap: 0;
+          column-gap: 0;
+}
+@media (min-width: 480px) {
+  .gallery {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+  }
+}
+@media (min-width: 1260px) {
+  .gallery {
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+  }
+}
+
+.gallery-image {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.gallery-image:before, .gallery-image:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 16px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  will-change: border;
+}
+.gallery-image:after {
+  border-width: 0;
+}
+.gallery-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+html:not(.touch) .gallery-image {
+  overflow: hidden;
+}
+html:not(.touch) .gallery-image:hover:before {
+  border-width: 16px;
+}
+html:not(.touch) .gallery-image:hover:after {
+  border-width: 32px;
+}
+.touch .gallery-image figcaption {
+  top: auto;
+  bottom: 2em;
+}
+
+.mfp-with-zoom .mfp-container, .mfp-with-zoom.mfp-bg {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.mfp-with-zoom.mfp-bg {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.mfp-with-zoom.mfp-ready .mfp-container {
+  opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+  opacity: 1;
+}
+.mfp-with-zoom.mfp-removing .mfp-container, .mfp-with-zoom.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+.mfp-with-zoom img.mfp-img {
+  padding: 0;
+}
+.mfp-with-zoom .mfp-figure:after {
+  top: 0;
+  bottom: 0;
+}
+.mfp-with-zoom .mfp-container {
+  padding: 0;
+}
+.mfp-with-zoom .mfp-content {
+  overflow: hidden;
+}
+.mfp-with-zoom .mfp-bottom-bar {
+  top: auto;
+  bottom: 0;
+  margin-top: 0;
+}
+.mfp-with-zoom .mfp-title {
+  top: auto;
+  bottom: 2em;
+}
+
+.mfp-arrow {
+  opacity: 1;
+  margin-top: 0 !important;
+  width: 20%;
+  height: 30%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.mfp-arrow:before, .mfp-arrow:after {
+  margin: 0;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  -webkit-transform: rotate(-45deg) translate(-50%, -100%);
+          transform: rotate(-45deg) translate(-50%, -100%);
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+}
+.mfp-arrow:active {
+  -webkit-transform: translateY(-50%) scale(0.95);
+          transform: translateY(-50%) scale(0.95);
+}
+
+.mfp-arrow-left {
+  left: 0;
+}
+.mfp-arrow-left:before, .mfp-arrow-left:after {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+}
+.mfp-arrow-left:after {
+  margin-left: 2rem;
+}
+.mfp-arrow-left:hover:before, .mfp-arrow-left:active:before {
+  margin-left: 2rem;
+}
+.mfp-arrow-left:hover:after, .mfp-arrow-left:active:after {
+  margin-left: 0;
+}
+
+.mfp-arrow-right {
+  right: 0;
+}
+.mfp-arrow-right:before, .mfp-arrow-right:after {
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+}
+.mfp-arrow-right:after {
+  margin-left: 2rem;
+}
+.mfp-arrow-right:hover:before {
+  margin-left: 2rem;
+}
+.mfp-arrow-right:hover:after {
+  margin-left: 0;
+}
+
+button.mfp-close {
+  opacity: 1;
+  margin-top: 0 !important;
+  width: 20%;
+  height: 30%;
+  font: 0/0 serif;
+  text-shadow: none;
+  color: transparent;
+}
+button.mfp-close:before, button.mfp-close:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  opacity: 1;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+}
+button.mfp-close:before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+button.mfp-close:after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+button.mfp-close:hover:before {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+button.mfp-close:hover:after {
+  -webkit-transform: rotate(315deg);
+          transform: rotate(315deg);
+}
+button.mfp-close:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+[id=footer] {
+  margin-top: 10vh;
+  padding: 10vh 0;
+  text-align: center;
+}
+[id=footer] .container {
+  position: relative;
+}
+[id=footer] .container:before, [id=footer] .container:after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 20px;
+  z-index: 10;
+  border-top: 2px solid;
+  width: 10%;
+  margin-bottom: 10vh;
+}
+[id=footer] .container:after {
+  left: auto;
+  right: 20px;
+}
+[id=footer] * {
+  display: block;
+}
+[id=footer] * + * {
+  margin-top: 5vh;
+}
+[id=footer] .logo {
+  font-weight: 600;
+  font-size: 1.5em;
+}
+[id=footer] .copy {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+
+    </style>
+  <script>(function () {
+    (function () {
+      var logo, logo_css;
+      logo = '<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zM7.139 21.651l1.35-1.35a.387.387 0 0 0 0-.54l-3.49-3.49a.387.387 0 0 0-.54 0l-1.35 1.35a.39.39 0 0 0 0 .54l3.49 3.49a.38.38 0 0 0 .54 0zm6.922.153l2.544-2.543a.722.722 0 0 0 0-1.018l-6.582-6.58a.722.722 0 0 0-1.018 0l-2.543 2.544a.719.719 0 0 0 0 1.018l6.58 6.579c.281.28.737.28 1.019 0zm14.779-5.85l-7.786-7.79a.554.554 0 0 0-.788 0l-5.235 5.23a.558.558 0 0 0 0 .789l7.79 7.789c.216.216.568.216.785 0l5.236-5.236a.566.566 0 0 0 0-.786l-.002.003zm-3.89 2.806a.813.813 0 1 1 0-1.626.813.813 0 0 1 0 1.626z" fill="#FFF" fill-rule="evenodd"/></svg>';
+      logo_css = '.mM{display:block;border-radius:50%;box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);position:fixed;bottom:1em;right:1em;-webkit-transform-origin:50% 50%;transform-origin:50% 50%;-webkit-transition:all 240ms ease-in-out;transition:all 240ms ease-in-out;z-index:9999;opacity:0.75}.mM svg{display:block}.mM:hover{opacity:1;-webkit-transform:scale(1.125);transform:scale(1.125)}';
+      document.head.insertAdjacentHTML('beforeend', '<style>' + logo_css + '</style>');
+      document.body.insertAdjacentHTML('beforeend', '<a href="./images/1.jpeg_blank" class="mM">' + logo + '</a>');
+      return$('.gallery-link').magnificPopup;
+      return {
+        type: 'image',
+        closeOnContentClick: true,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        image: {
+          verticalFit: true,
+          titleSrc: function (item) {
+            return item.el.find('figcaption').text() || item.el.attr('title');
+          } },
+  
+        zoom: {
+          enabled: true },
+  
+        // duration: 300
+        gallery: {
+          enabled: true,
+          navigateByImgClick: false,
+          tCounter: '' },
+  
+        disableOn: function () {
+          return $(window).width() > 640;
+        } };
+  
+    })();
+  
+  }).call(this);
+  
+
+  //# sourceURL=coffeescript</script>
+  </head>
+    <body style="background-color: black;">
+      <div id="loader">
+        <svg viewBox="0 0 960 300">
+          <symbol id="s-text">
+          <text text-anchor="middle" x="50%" y="80%">TNM 2020</text>
+          </symbol>
+        
+          <g class = "g-ants">
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          </g>
+        </svg>
+        <!-- <h2 style="color: aliceblue;">Relive The Reminiscence</h2> -->
+      </div>c
+     <h1 style="
+     font-size: 4.3vw;
+	color: whitesmoke;
+	text-shadow: 0 0 15px rgb(2, 0, 0);
+	font-family: 'Mogra', cursive;
+	line-height: 1;
+	text-transform: uppercase;
+	padding: 1vw;
+	text-align: center;
+	padding-right: 4.5vw;
+	letter-spacing: 2px;
+     ">GALLERY</h1>
+      
+      <article class='gallery'>
+        <a class='gallery-link' href='./images/1.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/1.jpeg' width='1600'>
+            <figcaption>Fun</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/2.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1200' src='./images/2.jpeg' width='1400'>
+            <figcaption>Stalls</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/3.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1200' src='./images/3.jpeg' width='1200'>
+            <figcaption>Dance</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/4.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1200' src='./images/4.jpeg' width='1400'>
+            <figcaption>Dance</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/5.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1000' src='./images/5.jpeg' width='1000'>
+            <figcaption>Fest</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/6.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1000' src='./images/6.jpeg' width='1400'>
+            <figcaption>Vibe</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/7.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/7.jpeg' width='1600'>
+            <figcaption>Aura</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/8.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1000' src='./images/8.jpeg' width='1400'>
+            <figcaption>Food</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/9.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/9.jpeg' width='1400'>
+            <figcaption>Stage</figcaption>
+          </figure>
+        </a>
+        <a class='gallery-link' href='./images/10.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/10.jpeg' width='1400'>
+            <figcaption>Star</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/11.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/11.jpeg' width='1400'>
+            <figcaption>Sports</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/12.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/12.jpeg' width='1400'>
+            <figcaption>Game</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/13.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/13.jpeg' width='1400'>
+            <figcaption>Coding</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/14.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/14.jpeg' width='1400'>
+            <figcaption>fashion</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/15.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/15.jpeg' width='1400'>
+            <figcaption>Singing</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/16.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/16.jpeg' width='1400'>
+            <figcaption>Swag</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/17.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/17.jpeg' width='1400'>
+            <figcaption>Drama</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/18.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/18.jpeg' width='1400'>
+            <figcaption>Aayam</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/19.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/19.jpeg' width='1400'>
+            <figcaption>Cool</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/20.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/20.jpeg' width='1400'>
+            <figcaption>Competition</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/21.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/21.jpeg' width='1400'>
+            <figcaption>EDM</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/22.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/22.jpeg' width='1400'>
+            <figcaption>Treasure hunt</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/23.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/23.jpeg' width='1400'>
+            <figcaption>Crowd</figcaption>
+          </figure>
+        </a>  <a class='gallery-link' href='./images/24.jpeg'>
+          <figure class='gallery-image'>
+            <img height='1600' src='./images/24.jpeg' width='1400'>
+            <figcaption>Love</figcaption>
+          </figure>
+        </a>  
+      </article>
+      <footer id='footer' role='contentinfo'>
+        <div class='container'>
+          
+        </div>
+      </footer>
+      
+
+  
+    </body>
+</html>
