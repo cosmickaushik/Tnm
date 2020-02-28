@@ -2,13 +2,13 @@ html,body,#codeoutcover,#parallax-cover {
   max-width: 100% !important;
   overflow-x: hidden !important;
 }
+
 body {
+  /* scroll-behavior: smooth !important; */
   height: 100vh !important;
+  /* -webkit-overflow-scrolling: touch !important; */
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 @media (min-width: 200px) {
   #codeincover {
@@ -25,6 +25,9 @@ html {
 }
 
 @media (max-width: 900px) {
+  body{
+    overflow: hidden !important;
+  }
   .img {
     height: 50vh;
     width: 50vh;
